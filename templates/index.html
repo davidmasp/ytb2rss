@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flask App</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+              theme: {
+                extend: {
+                  colors: {
+                    clifford: '#da373d',
+                  }
+                }
+              }
+            }
+          </script>
+    </head>
+<body>
+    <div class="grid grid-cols-1">
+    <div class="h-32">
+    </div>
+    <div class="h-32 ">
+    <h1 class="text-5xl h-24 text-center align-text-center font-mono">
+        youtube channel ➡️ RSS feed
+    </h1>
+    <p class="text-center font-mono">Copy paste a list of channel ids (i.e. @LinusTechTips)</p>
+</div>
+    <div class="place-content-center grid justify-items-center grid-cols-1 w-full">
+        <form method="POST" class="w-3/5 grid grid-cols-1 justify-items-stretch">
+            <div>
+                <textarea name="text" required class="h-64 border-4 border-orange-500 text-gray-800 bg-gray-200 w-full px-3 py-2 border rounded-lg focus:outline-none" rows="4"></textarea>
+            </div>
+            <div class="justify-self-center justify-items-center grid-cols-1 grid w-2/5">
+                <button type="submit" class="bg-orange-500 hover:bg-orange-700 opacity-100 mt-3 px-4 py-2 text-white rounded">Submit</button>
+            </div>
+        </form>
+    </div>
+    {% if result %}
+        <table class="w-full text-md bg-white shadow-md rounded mb-4">
+            <tbody>
+                <tr class="border-b">
+                    <th class="text-left p-3 px-5 text-center">Channel</th>
+                    <th class="text-left p-3 px-5 text-center">RSS</th>
+                </tr>
+                {% for item in result %}
+                    <tr class="border-b hover:bg-orange-100 bg-gray-100">
+                        <td class="p-3 px-5 text-center">{{ item.name }}</td>
+                        <td class="p-3 px-5 text-center">{{ item.rss }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    </div>
+</body>
+</html>

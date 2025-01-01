@@ -41,10 +41,19 @@ docker run -p 5000:5000 ytb2rss
 Copy paste this docker-compose example in your directory:
 
 ```
-...
+services:
+  ytb2rss:
+    image: ghcr.io/davidmasp/ytb2rss:0.1.1
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    networks:
+      - caddy
+
+networks:
+  caddy:
+    external: true
 ```
-
-
 
 and run with:
 

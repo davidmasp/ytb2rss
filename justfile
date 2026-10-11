@@ -3,6 +3,10 @@ build:
     mkdir -p dist
     bun build ./src/cli.ts --compile --minify --outfile ./dist/ytb2rss
 
+# Build binaries for Apple Silicon macOS and common Debian-compatible Linux systems.
+build-portable:
+    bun run build:portable
+
 # Cross-compile for a Bun target, e.g. `just build-target bun-linux-x64`.
 [arg('target', pattern='bun-(darwin-(x64|arm64)|linux-(x64|arm64)(-musl)?|windows-(x64|arm64))')]
 build-target target:

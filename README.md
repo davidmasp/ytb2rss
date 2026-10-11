@@ -27,6 +27,15 @@ bun run build
 
 The [standalone executable](https://bun.sh/docs/bundler/executables) includes the Bun runtime and package dependencies. Once built, the single binary can be copied elsewhere and run without Bun, Node.js, `node_modules`, or the project source. Bun is only needed to develop or rebuild it. Build a separate binary for each operating system and CPU architecture.
 
+Build binaries for Apple Silicon Macs and common Linux systems (Debian/Ubuntu x64 and ARM64) in one command:
+
+```sh
+bun install --frozen-lockfile
+bun run build:portable
+```
+
+The files are `dist/ytb2rss-macos-arm64`, `dist/ytb2rss-linux-x64`, and `dist/ytb2rss-linux-arm64`. The Linux builds use glibc, as used by Debian and Ubuntu. GitHub Actions also builds these files on manual runs and version tags; download them from the run's **Artifacts** section.
+
 To install it as `ytb2rss` for your own user on macOS or Linux:
 
 ```sh

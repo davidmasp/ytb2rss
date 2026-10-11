@@ -1,0 +1,38 @@
+name: Build portable binaries
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v6
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build macOS and Linux binaries
+        run: bun run build:portable
+
+      - name: Upload binaries
+        uses: actions/upload-artifact@v6
+        with:
+          name: ytb2rss-${{ github.ref_name }}
+          path: |
+            dist/ytb2rss-macos-arm64
+            dist/ytb2rss-linux-x64
+            dist/ytb2rss-linux-arm64
+          if-no-files-found: error

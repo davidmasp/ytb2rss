@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build/
+.ytb2rss-cache.json
+*.tmp
+coverage/
+.nyc_output/
+*.lcov
+.DS_Store
+
+# Local input and generated output files
+/channels.txt
+/feeds.txt
+/feeds.opml
+/test.opml

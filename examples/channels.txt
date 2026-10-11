@@ -1,0 +1,3 @@
+# One channel ID per line. IDs are converted without network requests.
+UCBLCvUUCiSqBCEc-TqZ9rGw
+UC_x5XG1OV2P6uZZ5FSM9Ttw
